@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #bg {
+        width: 710px;
+        height: 296px;
+        background-color: white;
+        margin: 10px auto;
+        border: 1px solid black;
+    }
+
+    #list {
+        list-style: none;
+        text-align: center;
+    }
+
+    #list li {
+        float: left;
+        width: 128px;
+        height: 128px;
+        border: 1px solid gray;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    #list li img {
+        opacity: 0.3;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var liArray = document.getElementById("list").getElementsByTagName("li");
+
+        for (var i = 0; i < liArray.length; i++) {
+            liArray[i].getElementsByTagName("img")[0].onmouseover = function() {
+                this.style.opacity = 1.0;
+            }
+
+            liArray[i].getElementsByTagName("img")[0].onmouseout = function() {
+                this.style.cssText = "";
+            }
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div id="bg">
+        <ul id="list">
+            <li><img src="imgs/1.jpg"></li>
+            <li><img src="imgs/2.jpg"></li>
+            <li><img src="imgs/3.jpg"></li>
+            <li><img src="imgs/4.jpg"></li>
+            <li><img src="imgs/5.jpg"></li>
+            <li><img src="imgs/6.jpg"></li>
+            <li><img src="imgs/7.jpg"></li>
+            <li><img src="imgs/8.jpg"></li>
+            <li><img src="imgs/9.jpg"></li>
+            <li><img src="imgs/10.jpg"></li>
+        </ul>
+    </div>
+</body>
+
+</html>

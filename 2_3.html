@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #div {
+        width: 500px;
+        height: 500px;
+        margin: 10px auto;
+        text-align: center;
+    }
+
+    #input {
+        width: 200px;
+    }
+
+    #div span {
+        font-size: 12px;
+        color: gray;
+    }
+
+    #button {
+        position: relative;
+        left: -195px;
+        margin-top: 10px;
+    }
+
+    #result {
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        margin-top: 10px;
+        position: relative;
+        left:40px;
+        color: red;
+        font-size: 40px;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var text = document.getElementById("input");
+        var button = document.getElementById("button");
+        var input = document.getElementById("result");
+        var resultNum = 120;
+
+        text.onchange = function() {
+            resultNum = 0;
+            var arr = text.value.split(",");
+            for (var i = 0; i < arr.length; i++) {
+                resultNum += Number(arr[i]);
+            }
+        }
+
+        button.onclick = function() {
+            input.innerHTML = String(resultNum);
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div id="div">
+        <input type="text" value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15" id="input">
+        <span>输入数字求和，数字之间用半角","号分隔</span>
+        <br/>
+        <input type="button" value="求和" id="button">
+        <p id="result"></p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    input {
+        margin: 0px 5px;
+    }
+
+    #bg {
+        width: 400px;
+        height: 100px;
+        margin: 10px auto;
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .input {
+        display: inline-block;
+        width: 50px;
+        background-color: lightgray;
+        border: 1px solid gray;
+    }
+
+    #show {
+        color: red;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var input_one = document.getElementById("bg").getElementsByTagName("input")[0];
+        var input_two = document.getElementById("bg").getElementsByTagName("input")[1];
+        var button = document.getElementById("bg").getElementsByTagName("input")[2];
+        var result = document.getElementById("show");
+
+        button.onclick = function() {
+            if (!input_one.value.length || !input_two.value.length) {
+                alert("请输入数字");
+            } else {
+                result.innerHTML = Math.max(Number(input_one.value), Number(input_two.value));
+            }
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div id="bg">
+        <input type="text" class="input"> VS
+        <input type="text" class="input">
+        <input type="button" value="最大的数是 >>">
+        <span id="show">?</span>
+    </div>
+</body>
+
+</html>

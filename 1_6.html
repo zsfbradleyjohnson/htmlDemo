@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #div {
+        width: 500px;
+        height: 100px;
+        margin: 10px auto;
+        text-align: center;
+    }
+
+    #div p {
+        width: 200px;
+        height: 50px;
+        line-height: 20px;
+        margin: 10px auto;
+        text-align: center;
+        background-color: lightyellow;
+        border: 1px solid red;
+        font-size: 13px;
+        position: relative;
+        left: 40px;
+        display: none;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var checkbox = document.getElementById("div").getElementsByTagName("input")[0];
+
+        checkbox.onmouseover = function() {
+            document.getElementById("div").getElementsByTagName("p")[0].style.display = "block";
+        }
+
+        checkbox.onmouseout = function() {
+            document.getElementById("div").getElementsByTagName("p")[0].style.cssText = "";
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div id="div">
+        <input type="checkbox"> 两周内自动登录
+        <br/>
+        <p>为了您的信息安全，请不要在网吧或公用电脑上使用此功能！</p>
+    </div>
+</body>
+
+</html>

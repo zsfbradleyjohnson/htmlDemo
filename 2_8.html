@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #bg {
+        width: 320px;
+        background-color: lightgray;
+        margin: 20px auto;
+        padding: 5px;
+    }
+
+    #list {
+        list-style: none;
+    }
+
+    #list li {
+        display: inline-block;
+        width: 58px;
+        height: 58px;
+        text-align: center;
+        line-height: 30px;
+        background-color: #424242;
+        color: white;
+        margin: 5px 0px 0px 5px;
+        padding: 5px;
+        font-size: 20px;
+        border: 1px solid black;
+    }
+
+    #list li.current {
+        background-color: white;
+        color: #FD689A;
+    }
+
+    #content {
+        width: 285px;
+        background-color: #F1F1F1;
+        margin: 10px 0px 10px 5px;
+        padding: 10px;
+        font-size: 15px;
+        border: 1px solid white;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var li_array = document.getElementById("list").getElementsByTagName("li");
+        var content = document.getElementById("content");
+        var content_array = [
+            "元旦：1月1日至3日放假三天。",
+            "春节：2月2日至8日放假7天。",
+            "妇女节：3月8日妇女节，与我无关。",
+            "清明节：4月3日至5日放假3天",
+            "劳动节：4月30日至5月2日放假3天。",
+            "端午节：6月4日至6日放假3天。",
+            "小暑：7月7日小暑。不放假。",
+            "七夕节：8月6日七夕节。不放假。",
+            "中秋节：9月10日至12日放假3天。",
+            "国庆节：10月1日至7日放假7天。",
+            "立冬：11月8日立冬。不放假。",
+            "艾滋病日:12月1日<br />废除奴隶制国际日:12月2日。"
+        ]
+
+        content.innerHTML = "<strong>0月节日</strong><br/><br/>元旦：1月1日至3日放假三天。";
+
+        for (var i = 0; i < li_array.length; i++) {
+            li_array[i].onmouseover = function() {
+
+                var string = "月节日</strong><br/><br/>";
+                for (var j = 0; j < li_array.length; j++) {
+                    li_array[j].className = "";
+                    if (li_array[j] === this) {
+                        string = "<strong>" + String(j + 1) + string + content_array[j];
+                    }
+                }
+                this.className = "current";
+
+                content.innerHTML = string;
+            }
+
+
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div id="bg">
+        <ul id="list">
+            <li class="current">1
+                <br/>JAN</li>
+            <li>2
+                <br/>FER</li>
+            <li>3
+                <br/>MAR</li>
+            <li>4
+                <br/>APR</li>
+            <li>5
+                <br/>MAY</li>
+            <li>6
+                <br/>JUN</li>
+            <li>7
+                <br/>JUL</li>
+            <li>8
+                <br/>AUG</li>
+            <li>9
+                <br/>SEP</li>
+            <li>10
+                <br/>OCT</li>
+            <li>11
+                <br/>NOV</li>
+            <li>12
+                <br/>DEC</li>
+        </ul>
+        <div id="content"></div>
+    </div>
+</body>
+
+</html>

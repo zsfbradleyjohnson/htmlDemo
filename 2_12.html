@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    hr {
+        width: 80%;
+        text-align: left;
+        margin-left: 10px;
+    }
+
+    a:link,
+    a:visited {
+        color: #29A5FC;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: red;
+    }
+
+    #bg {
+        width: 150px;
+        height: 300px;
+        border: 1px solid black;
+        margin: 10px auto;
+    }
+
+    #header {
+        height: 20px;
+        padding: 10px;
+    }
+
+    #header span,
+    a {
+        font-size: 13px;
+    }
+
+    #header span {
+        margin: 0px 5px;
+    }
+
+    #list {
+        list-style: none;
+        padding: 10px;
+    }
+
+    #list li {
+        margin-bottom: 11px;
+        font-size: 13px;
+    }
+
+    #list li input {
+        margin-right: 10px;
+    }
+
+    #remind {
+        width: 500px;
+        margin: 0px auto;
+        font-size: 13px;
+        text-align: center;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var headerCb = document.getElementById("header").getElementsByTagName("input")[0];
+        var versoChose = document.getElementById("header").getElementsByTagName("a")[0];
+        var span = document.getElementById("header").getElementsByTagName("span")[0];
+
+        var chose_array = document.getElementById("list").getElementsByTagName("input");
+
+        headerCb.onclick = function() {
+            for (var i = 0; i < chose_array.length; i++) {
+                chose_array[i].checked = this.checked;
+            }
+
+            span.innerHTML = this.checked ? "全不选" : "全选";
+        }
+
+        for (var i = 0; i < chose_array.length; i++) {
+
+            chose_array[i].onclick = function() {
+
+                var a = true;
+                for (var j = 0; j < chose_array.length; j++) {
+                    if (chose_array[j].checked !== this.checked) {
+                        a = false;
+                        break;
+                    }
+                }
+
+                headerCb.checked = a;
+                span.innerHTML = a ? "全不选" : "全选";
+            }
+        }
+
+        versoChose.onclick = function() {
+            for (var j = 0; j < chose_array.length; j++) {
+                chose_array[j].checked = !chose_array[j].checked;
+            }
+
+            var a = 0;
+            for (var j = 0; j < chose_array.length; j++) {
+                if (chose_array[j].checked === true) {
+                    a++;
+                }
+            }
+
+            headerCb.checked = a === 10 ? true : false;
+            span.innerHTML = a === 10 ? "全不选" : "全选";
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div id="bg">
+        <div id="header">
+            <input type="checkbox">
+            <span>全选</span>
+            <a href="#">反选</a>
+        </div>
+        <hr>
+        <ul id="list">
+            <li>
+                <input type="checkbox">选项（一）</li>
+            <li>
+                <input type="checkbox">选项（二）</li>
+            <li>
+                <input type="checkbox">选项（三）</li>
+            <li>
+                <input type="checkbox">选项（四）</li>
+            <li>
+                <input type="checkbox">选项（五）</li>
+            <li>
+                <input type="checkbox">选项（六）</li>
+            <li>
+                <input type="checkbox">选项（七）</li>
+            <li>
+                <input type="checkbox">选项（八）</li>
+            <li>
+                <input type="checkbox">选项（九）</li>
+            <li>
+                <input type="checkbox">选项（十）</li>
+        </ul>
+    </div>
+    <p id="remind">1、切换全选/全不选文字；2、根据选中个数更新全选框状态；</p>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #div {
+        width: 500px;
+        height: 500px;
+        text-align: center;
+        margin: 10px auto;
+    }
+
+    #div div {
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        margin: 10px 10px;
+        background-color: black;
+    }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var button = document.getElementById("div").getElementsByTagName("input")[0];
+            button.onclick = function() {
+                for (var i = 0; i < document.getElementById("div").getElementsByTagName("div").length; i++) {
+                    document.getElementById("div").getElementsByTagName("div")[i].style.backgroundColor = "red";
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="div">
+        <input type="button" value="点击将Div变红色">
+        <br/>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+
+</html>

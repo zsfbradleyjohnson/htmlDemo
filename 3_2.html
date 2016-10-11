@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #bg {
+        width: 500px;
+        height: 100px;
+        margin: 10px auto;
+        text-align: center;
+    }
+
+    #show {
+        display: inline-block;
+        margin: 0px 10px;
+    }
+
+    .input {
+        display: inline-block;
+        margin: 0px 10px;
+        width: 50px;
+        background-color: lightgray;
+        border: 1px solid gray;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var input_one = document.getElementById("bg").getElementsByTagName("input")[0];
+        var input_two = document.getElementById("bg").getElementsByTagName("input")[1];
+        var result = document.getElementById("show");
+        var button = document.getElementById("bg").getElementsByTagName("input")[2];
+
+        button.onclick = function() {
+
+            if (!input_one.value.length || !input_two.value.length) {
+                alert("请输入数字!");
+            } else {
+                result.innerHTML = String(parseInt(input_one.value) + parseInt(input_two.value));
+            }
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div id="bg">
+        <input type="text" class="input"> +
+        <input type="text" class="input"> = <span id="show">?</span>
+        <input type="button" value="求和">
+    </div>
+</body>
+
+</html>

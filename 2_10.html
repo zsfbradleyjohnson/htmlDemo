@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #bg {
+        width: 600px;
+        height: 300px;
+        margin: 10px auto;
+        border: 1px solid black;
+        padding: 20px;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    #list {
+        list-style: none;
+        margin-top: 20px;
+    }
+
+    #list li {
+        display: inline-block;
+        width: 100px;
+        height: 80px;
+        line-height: 20px;
+        background-color: lightgray;
+        font-size: 13px;
+        text-align: center;
+        margin: 5px;
+        padding-top: 20px;
+        border: 1px solid gray;
+    }
+
+    #list li img {
+        position: relative;
+        top: -70px;
+        left: -10px;
+        width: 126px;
+        height: 126px;
+        border: 1px solid gray;
+        display: none;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var list = document.getElementById("list");
+        var li_Array = list.getElementsByTagName("li");
+
+        for (var i = 0; i < li_Array.length; i++) {
+            li_Array[i].onmouseover = function() {
+                var img = this.getElementsByTagName("img")[0];
+                img.style.display = (img.style.display === "none" || img.style.display === "") ? "block" : "none";
+            }
+
+            li_Array[i].onmouseout = function() {
+                var img = this.getElementsByTagName("img")[0];
+                img.style.cssText = "";
+            }
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div id="bg">
+        名车车标展示-鼠标移过显示车标
+        <br/>
+        <ul id="list">
+            <li>
+                <strong>BMW</strong>
+                <br/>宝马汽车
+                <img src="imgs/1.jpg" alt="宝马汽车">
+            </li>
+            <li>
+                <strong>Alfa Romeo</strong>
+                <br/>阿尔法-罗密欧
+                <img src="imgs/2.jpg" alt="阿尔法-罗密欧">
+            </li>
+            <li>
+                <strong>Skoda</strong>
+                <br/>斯柯达
+                <img src="imgs/3.jpg" alt="斯柯达">
+            </li>
+            <li>
+                <strong>Volkswagen</strong>
+                <br/>大众汽车
+                <img src="imgs/4.jpg" alt="大众汽车">
+            </li>
+            <li>
+                <strong>Saab</strong>
+                <br/>萨布汽车
+                <img src="imgs/5.jpg" alt="萨布汽车">
+            </li>
+            <li>
+                <strong>Lamborghini</strong>
+                <br/>兰博基尼
+                <img src="imgs/6.jpg" alt="兰博基尼">
+            </li>
+            <li>
+                <strong>Porsche</strong>
+                <br/>保时捷
+                <img src="imgs/7.jpg" alt="保时捷">
+            </li>
+            <li>
+                <strong>Peugeot</strong>
+                <br/>标致
+                <img src="imgs/8.jpg" alt="标致">
+            </li>
+            <li>
+                <strong>Mercedes</strong>
+                <br/>梅德赛斯 奔驰
+                <img src="imgs/9.jpg" alt="梅德赛斯 奔驰">
+            </li>
+            <li>
+                <strong>Buick</strong>
+                <br/>别克汽车
+                <img src="imgs/10.jpg" alt="别克汽车">
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
