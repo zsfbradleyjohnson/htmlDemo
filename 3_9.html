@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #bg {
+        width: 300px;
+        height: 200px;
+        margin: 10px auto;
+        background-color: black;
+    }
+
+    #list {
+        list-style: none;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    #list li {
+        display: inline-block;
+        color: white;
+        width: 40px;
+        height: 20px;
+        line-height: 20px;
+        margin-top: 50px;
+        border: 2px solid black;
+        vertical-align: middle;
+    }
+
+    #list li.time {
+        width: 50px;
+        border-color: gray;
+        background-color: white;
+        color: black;
+    }
+
+    button {
+        display: block;
+        width: 90%;
+        height: 50px;
+        margin-top: 40px;
+        background-color: green;
+        color: white;
+        font-size: 22px;
+        letter-spacing: 10px;
+        text-align: center;
+        border-radius: 8px;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var button = document.getElementsByTagName("button")[0];
+        var t;
+
+        button.onclick = function() {
+            this.style.backgroundColor = (this.style.backgroundColor === "red") ? "green" : "red";
+
+            if (this.innerHTML === "启动") {
+                this.innerHTML = "暂停";
+                t = self.setInterval("startTime()", 1000);
+            } else {
+                this.innerHTML = "启动";
+                clearInterval(t);
+            }
+        }
+    }
+
+    function startTime() {
+        var li_m = document.getElementById("list").getElementsByTagName("li")[0];
+        var li_s = document.getElementById("list").getElementsByTagName("li")[2];
+
+        var m = Number(li_m.innerHTML);
+        var s = Number(li_s.innerHTML);
+
+        s--;
+
+        if (s === 0 && m > 0) {
+            s = 59;
+            m = 0;
+        }
+
+        if (s === -1 && m === 0) {
+            return;
+        }
+
+        li_m.innerHTML = m;
+        li_s.innerHTML = s;
+    }
+    </script>
+</head>
+
+<body>
+    <div id="bg">
+        <ul id="list">
+            <li class="time">01</li>
+            <li>分钟</li>
+            <li class="time">40</li>
+            <li>秒</li>
+        </ul>
+        <center>
+            <button>启动</button>
+        </center>
+    </div>
+</body>
+
+</html>
