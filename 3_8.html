@@ -1,12 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #bg {
+        width: 600px;
+        height: 200px;
+        margin: 10px auto;
+        background-color: black;
+    }
+
+    #list {
+        list-style: none;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    #list li {
+        display: inline-block;
+        color: white;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        margin-top: 83px;
+        border: 2px solid black;
+        vertical-align: middle;
+    }
+
+    #list li.time {
+        width: 50px;
+        border-color: gray;
+        background-color: white;
+        color: black;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        setTime();
+    }
+
+    function setTime() {
+        var now = new Date();
+
+        document.getElementById("hour").innerHTML = now.getHours();
+
+        var m = now.getMinutes();
+        var s = now.getSeconds();
+
+        m = m < 10 ? "0" + String(m) : m;
+        s = s < 10 ? "0" + String(s) : s;
+        document.getElementById("minute").innerHTML = m;
+        document.getElementById("seconds").innerHTML = s;
+
+        var t = setTimeout("setTime()", 500);
+    }
+    </script>
 </head>
+
 <body>
     <div id="bg">
-
+        <ul id="list">
+            <li id="hour" class="time"></li>
+            <li>点</li>
+            <li id="minute" class="time"></li>
+            <li>分</li>
+            <li id="seconds" class="time"></li>
+            <li>秒</li>
+        </ul>
     </div>
 </body>
+
 </html>
