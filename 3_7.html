@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #bg {
+        width: 300px;
+        height: 350px;
+        margin: 10px auto;
+        text-align: right;
+        background-color: lightpink;
+    }
+
+    #show {
+        width: 290;
+        height: 50px;
+        line-height: 50px;
+        font-size: 30px;
+        padding: 5px;
+        background-color: #E3E5D1;
+    }
+
+    #list {
+        border: 1px solid #1F1F1F;
+        width: 300px;
+        height: 300px;
+        background-color: #1F1F1F;
+    }
+
+    #list td {
+        border: 1px solid black;
+        text-align: center;
+    }
+
+    .brown {
+        background-color: #67554C;
+        color: white;
+    }
+
+    .black {
+        background-color: #000000;
+        color: white;
+    }
+
+    .orange {
+        background-color: #EB7728;
+        color: white;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var show = document.getElementById("show");
+        var key_array = document.getElementById("list").getElementsByTagName("td");
+        var num_array = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+        var move_array = ["%", "÷", "×", "-", "+"];
+
+        var first = 0,
+            second = 0,
+            move = "";
+        decimal = false;
+
+        for (var i = 0; i < key_array.length; i++) {
+            if (key_array[i].innerHTML === "C") {
+                key_array[i].onclick = function() {
+                    show.innerHTML = "0";
+                    first = 0;
+                    second = 0;
+                    move = "";
+                    decimal = false;
+                }
+            }
+
+            if (num_array.indexOf(key_array[i].innerHTML) !== -1) {
+                key_array[i].onclick = function() {
+                    var number = 0;
+                    var theNum = Number(this.innerHTML);
+
+                    if (move.length) {
+                        var deal_reault = changeRightNumber(second, theNum);
+                        number = deal_reault[0];
+                        second = deal_reault[1];
+                    } else {
+                        var deal_reault = changeRightNumber(first, theNum);
+                        number = deal_reault[0];
+                        first = deal_reault[1];
+                    }
+
+                    show.innerHTML = number;
+                }
+            }
+
+            if (move_array.indexOf(key_array[i].innerHTML) !== -1) {
+                key_array[i].onclick = function() {
+                    move = this.innerHTML;
+                    decimal = false;
+                }
+            }
+
+            if (key_array[i].innerHTML === "=") {
+                key_array[i].onclick = function() {
+                    var result = 0;
+                    if (move === "%") {
+                        result = first % second;
+                    }
+
+                    if (move === "÷") {
+                        result = first / second;
+                    }
+
+                    if (move === "×") {
+                        result = first * second;
+                    }
+
+                    if (move === "-") {
+                        result = first - second;
+                    }
+
+                    if (move === "+") {
+                        result = first + second;
+                    }
+
+                    result = Number(String(result).substring(0,10));
+
+                    first = result;
+                    second = 0;
+                    move = "";
+                    decimal = false;
+
+                    show.innerHTML = result;
+                }
+            }
+
+            if (key_array[i].innerHTML === ".") {
+                key_array[i].onclick = function() {
+                    if (decimal === true) {
+                        return;
+                    }
+                    decimal = true;
+                    show.innerHTML = show.innerHTML + ".";
+                }
+            }
+        }
+
+        function changeRightNumber(eventNum, theNum) {
+            var num = 0;
+            if (decimal === true) {
+
+                if (String(eventNum).length >= 10) {
+                    return;
+                }
+
+                eventNum = Number(show.innerHTML + String(theNum));
+                num = eventNum;
+
+            } else {
+                if (String(eventNum).length >= 10) {
+                    return;
+                }
+                eventNum = eventNum * 10 + theNum;
+                num = eventNum;
+            }
+
+            return [num, eventNum];
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div id="bg">
+        <p id="show">0</p>
+        <table id="list">
+            <tr>
+                <td class="brown">C</td>
+                <td class="brown">%</td>
+                <td class="brown">÷</td>
+                <td class="brown">×</td>
+            </tr>
+            <tr>
+                <td class="black">7</td>
+                <td class="black">8</td>
+                <td class="black">9</td>
+                <td class="brown">-</td>
+            </tr>
+            <tr>
+                <td class="black">4</td>
+                <td class="black">5</td>
+                <td class="black">6</td>
+                <td class="brown">+</td>
+            </tr>
+            <tr>
+                <td class="black">1</td>
+                <td class="black">2</td>
+                <td class="black">3</td>
+                <td rowspan="2" class="orange">=</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="black">0</td>
+                <td class="black">.</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
