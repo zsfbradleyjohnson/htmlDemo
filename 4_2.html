@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #bg {
+        width: 500px;
+        height: 180px;
+        margin: 10px auto;
+        background-color: lightpink;
+        border-radius: 5px;
+    }
+
+    #list {
+        list-style: none;
+        margin: 5px;
+    }
+
+    #list li {
+        display: none;
+    }
+
+    #list li.current {
+        display: inline-block;
+        margin-top: 5px;
+    }
+
+    #page_control {
+        list-style: none;
+        display: block;
+        width: 125px;
+        position: relative;
+        top: -30px;
+        left: 370px;
+        text-align: center;
+    }
+
+    #page_control li {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        color: white;
+        background-color: orange;
+        border-radius: 10px;
+        font-size: 13px;
+        opacity: 0.5;
+    }
+
+    #page_control li.current {
+        opacity: 1.0;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var t = setInterval("startChangeImg()", 3000);
+
+        var img_li_array = document.getElementById("list").getElementsByTagName("li");
+        var page_control_li_array = document.getElementById("page_control").getElementsByTagName("li");
+
+        for (var i = 0; i < page_control_li_array.length; i++) {
+            page_control_li_array[i].onmouseover = function() {
+                for (var i = 0; i < img_li_array.length; i++) {
+                    img_li_array[i].className = "";
+                    page_control_li_array[i].className = "";
+
+                    if (page_control_li_array[i] === this) {
+                        img_li_array[i].className = "current";
+                        page_control_li_array[i].className = "current";
+                    }
+                }
+            }
+        }
+
+    }
+
+    function startChangeImg() {
+        var img_li_array = document.getElementById("list").getElementsByTagName("li");
+        var page_control_li_array = document.getElementById("page_control").getElementsByTagName("li");
+
+        var i = 0;
+        for (; i < img_li_array.length; i++) {
+            if (img_li_array[i].className === "current") {
+                img_li_array[i].className = "";
+                page_control_li_array[i].className = "";
+                i++;
+                if (i === img_li_array.length) {
+                    i = 0;
+                }
+                break;
+            }
+        }
+
+        img_li_array[i].className = "current";
+        page_control_li_array[i].className = "current";
+    }
+    </script>
+</head>
+
+<body>
+    <div id="bg">
+        <ul id="list">
+            <li class="current"><img src="imgs/4_2_01.jpg"></li>
+            <li><img src="imgs/4_2_02.jpg"></li>
+            <li><img src="imgs/4_2_03.jpg"></li>
+            <li><img src="imgs/4_2_04.jpg"></li>
+            <li><img src="imgs/4_2_05.jpg"></li>
+        </ul>
+        <ul id="page_control">
+            <li class="current"><strong>1</strong></li>
+            <li><strong>2</strong></li>
+            <li><strong>3</strong></li>
+            <li><strong>4</strong></li>
+            <li><strong>5</strong></li>
+        </ul>
+    </div>
+</body>
+
+</html>
