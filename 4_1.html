@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    #bg {
+        width: 1000px;
+        height: 100px;
+        margin: 10px auto;
+    }
+
+    #big_list {
+        background-color: #265E96;
+        text-align: center;
+        border-radius: 8px;
+    }
+
+    #big_list li {
+        display: inline-block;
+        width: 103px;
+        height: 30px;
+        line-height: 30px;
+        color: white;
+        margin: 10px auto;
+        padding:0px 10px;
+        background-color: #265E96;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+    }
+
+    .sub_list {
+        background-color: green;
+        text-align: center;
+        display: none;
+        background-color: #D2DEE9;
+        margin-top: 10px;
+        position: relative;
+    }
+
+    .sub_list li {
+        display: inline-block;
+        width: 78px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 14px;
+        color: #2C639A;
+        margin: 10px auto;
+        padding:0px 10px;
+        border-left: 1px solid black;
+    }
+    .sub_list li.sub_list_last_one {
+        border-right: 1px solid black;
+    }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var big_list_li_array = document.getElementById("big_list").getElementsByTagName("li");
+
+            for (var i = 0; i < big_list_li_array.length; i++) {
+                big_list_li_array[i].onmouseover = function() {
+                    this.style.backgroundColor = "#5985AE";
+                    subListEven(this.id,"block");
+                }
+
+                big_list_li_array[i].onmouseout = function() {
+                    this.style.cssText = "";
+                    subListEven(this.id,"none");
+                }
+            }
+        }
+
+        function subListEven (id,event) {
+            var id_name = id + "_list";
+            var sub_list = window.document.getElementById(id_name);
+            var id_array = ["one","two","thr","fou","fiv","six","sev","eig"];
+
+            sub_list.style.display = event;
+
+            if (event === "none") return;
+
+            var sub_list_length = sub_list.getElementsByTagName("li").length;
+            var width = String(sub_list_length*105);
+            sub_list.style.width = width+"px";
+
+            var index = id_array.indexOf(id);
+            var x = Number(index)*125;
+            if ((x+Number(width)) > 1000) {
+                x = 1000 - Number(width);
+            }
+            sub_list.style.left = String(x)+"px";
+        }
+    </script>
+</head>
+
+<body>
+    <div id="bg">
+        <ul id="big_list">
+            <li id="one">站长之家</li><li id="two">行业资讯</li><li id="thr">站长在线</li><li id="fou">网站运营</li><li id="fiv">设计在线</li><li id="six">网络编程</li><li id="sev">联盟资讯</li><li id="eig">服务器</li>
+        </ul>
+        <ul id="two_list" class="sub_list">
+            <li>业界动态</li>
+            <li>收购融资</li>
+            <li>门户动态</li>
+            <li>搜索引擎</li>
+            <li>网络游戏</li>
+            <li>电子商务</li>
+            <li>广告传媒</li>
+            <li class="sub_list_last_one">厂商开发</li>
+        </ul>
+        <ul id="thr_list" class="sub_list">
+            <li>站长报道</li>
+            <li>好站推荐</li>
+            <li>站长聚会</li>
+            <li>站长访谈</li>
+            <li>站长茶馆</li>
+            <li class="sub_list_last_one">网站排行</li>
+        </ul>
+        <ul id="fou_list" class="sub_list">
+            <li>建站经验</li>
+            <li>策划盈利</li>
+            <li>搜索优化</li>
+            <li>网络推广</li>
+            <li class="sub_list_last_one">免费资源</li>
+        </ul>
+        <ul id="fiv_list" class="sub_list">
+            <li>酷站推荐</li>
+            <li>网页设计</li>
+            <li>WEB标准</li>
+            <li>视频处理</li>
+            <li class="sub_list_last_one">设计活动</li>
+        </ul>
+        <ul id="six_list" class="sub_list">
+            <li>Asp编程</li>
+            <li>Php编程</li>
+            <li>.Net编程</li>
+            <li>Xml编程</li>
+            <li>Access</li>
+            <li>Mssql</li>
+            <li class="sub_list_last_one">Mysql</li>
+        </ul>
+        <ul id="sev_list" class="sub_list">
+            <li>联盟动态</li>
+            <li>联盟介绍</li>
+            <li>联盟点评</li>
+            <li class="sub_list_last_one">网赚技巧</li>
+        </ul>
+        <ul id="eig_list" class="sub_list">
+            <li>Web服务器</li>
+            <li>Ftp服务器</li>
+            <li>Mail服务器</li>
+            <li>Dns服务器</li>
+            <li>Win服务器</li>
+            <li>Linux服务器</li>
+            <li>安全防护</li>
+            <li class="sub_list_last_one">虚拟主机</li>
+        </ul>
+    </div>
+</body>
+
+</html>
