@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    #bg {
+        width: 100px;
+        height: 100px;
+        background-color: lightpink;
+        margin: 10px auto;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var button_array = document.getElementsByTagName("button");
+
+        button_array[1].onclick = function() {
+            button_array[0].innerHTML = "我可以点击了";
+
+            button_array[0].onclick = function() {
+                alert("事件绑定成功!")
+            }
+        }
+
+        button_array[2].onclick = function() {
+            button_array[0].innerHTML = "毫无用处的按钮";
+
+            button_array[0].onclick = null;
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div id="bg">
+        <button>毫无用处的按钮</button>
+        <button>绑定click</button>
+        <button>解除绑定</button>
+    </div>
+</body>
+
+</html>
