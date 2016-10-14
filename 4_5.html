@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #bg {
+            width:400px;
+            height: 200px;
+            background-color: rgb(254,244,235);
+            border: 1px solid rgb(252, 102, 33);
+            margin: 10px auto;
+        }
+
+        #bg div {
+            display: inline-block;
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: rgb(252, 102, 33);
+            color: white;
+            margin: 10px 5px 0px 10px;
+            font-size: 11px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            var div = document.getElementById("bg");
+            var get = document.getElementById("get");
+            var set = document.getElementById("set");
+            var reset = document.getElementById("reset");
+
+            get.onclick = function() {
+                alert(get.style.width);
+            }
+
+            set.onclick = function() {
+                div.style.backgroundColor = "rgb(239, 248, 255)";
+                div.style.borderColor = "rgb(23, 135, 251)";
+                div.style.width = "300px";
+                div.style.height = "400px";
+                get.style.backgroundColor = "rgb(23, 135, 251)";
+                this.style.backgroundColor = "rgb(23, 135, 251)";
+                reset.style.backgroundColor = "rgb(23, 135, 251)";
+            }
+
+            reset.onclick = function() {
+                div.style.cssText = "";
+                set.style.cssText = "";
+                get.style.cssText = "";
+                reset.style.cssText = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="bg">
+        <div id="get">Get Style</div>
+        <div id="set">Set Style</div>
+        <div id="reset">Default Style</div>
+    </div>
+</body>
+</html>

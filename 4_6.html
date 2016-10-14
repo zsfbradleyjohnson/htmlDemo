@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #bg {
+        width: 400px;
+        height: 150px;
+        margin: 10px auto;
+        border: 2px solid rgb(252, 102, 33);
+        background-color: rgb(254, 235, 216);
+    }
+
+    #header {
+        color: rgb(252, 121, 47);
+        padding: 10px;
+        height: 18px;
+        border-bottom: 2px solid rgb(252, 102, 33);
+    }
+
+    #login {
+        padding: 10px;
+        height: 90px;
+        background-color: rgb(254, 235, 217);
+        text-align: left;
+    }
+
+    #login span {
+        display: inline-block;
+        font-size: 14px;
+        margin-bottom: 10px;
+        width: 70px;
+        height: 20px;
+        text-align: right;
+    }
+
+    #login input {
+        background-color: rgb(255, 253, 237);
+        width: 175px;
+        height: 25px;
+        border-radius: 3px;
+    }
+
+    #login input.button {
+        background-color: rgb(252, 102, 33);
+        border-radius: 5px;
+        width: 100px;
+        height: 25px;
+    }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            var input_array = document.getElementById("login").getElementsByTagName("input");
+
+            for (var i = 0; i < input_array.length; i++) {
+                if (input_array[i].type !== "text") {
+                    return;
+                }
+
+                input_array[i].onfocus = function() {
+                    this.style.backgroundColor = "rgb(254, 231, 231)";
+                }
+
+                input_array[i].onblur = function() {
+                    this.style.cssText = "";
+                }
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div id="bg">
+        <p id="header">用户登录</p>
+        <form id="login">
+            <span>用户名：</span>
+            <input type="text">
+            <br/>
+            <span>密码：</span>
+            <input type="text">
+            <br/>
+            <input type="button" value="登录" class="button">
+        </form>
+    </div>
+</body>
+
+</html>

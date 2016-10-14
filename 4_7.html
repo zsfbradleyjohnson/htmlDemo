@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    p {
+        width: 100%-10px;
+        line-height: 30px;
+        padding: 5px;
+        border: 1px dotted gray;
+        background-color: rgb(240, 240, 240);
+        color: rgb(15, 127, 18);
+        font-size: 13px;
+        word-wrap: break-word;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var p_one = document.getElementById("p_one");
+        var p_two = document.getElementById("p_two");
+        var p_thr = document.getElementById("p_thr");
+
+        var button_array = document.body.getElementsByTagName("button");
+
+        var p_one_content = p_one.innerHTML.split(",");
+        var p_thr_content = p_thr.innerHTML.split(",");
+
+        button_array[0].onclick = function() {
+            var old = this.innerHTML;
+            var sub = old.substring(0, 2);
+            if (sub === "删除") {
+                p_one_content.shift();
+            } else {
+                p_one_content.unshift("January(1)");
+            }
+            p_one.innerHTML = p_one_content.join(",");
+            this.innerHTML = (sub === "删除") ? old.replace("删除", "添加") : old.replace("添加", "删除");
+        }
+
+        button_array[1].onclick = function() {
+            var old = this.innerHTML;
+            var sub = old.substring(0, 2);
+            if (sub === "删除") {
+                p_one_content.pop();
+            } else {
+                p_one_content.push("December(12)");
+            }
+            p_one.innerHTML = p_one_content.join(",");
+            this.innerHTML = (sub === "删除") ? old.replace("删除", "添加") : old.replace("添加", "删除");
+        }
+
+        button_array[2].onclick = function() {
+            var p_two_content = p_two.innerHTML.split(",");
+            var arr = p_two_content.slice(0, p_two_content.length);
+            p_two.innerHTML = p_two_content.concat(arr).join(",");
+        }
+
+        button_array[3].onclick = function() {
+            var p_two_content = p_two.innerHTML.split(",");
+            p_two_content.length = 10;
+            p_two.innerHTML = p_two_content.join(",");
+        }
+
+        button_array[4].onclick = function() {
+            p_thr_content = ["red","green","blue","white","yellow","black","brown"];
+            p_thr.innerHTML = p_thr_content.join(",");
+        }
+
+        button_array[5].onclick = function() {
+            for (var i = 0; i < 3; i++) {
+                p_thr_content.shift();
+            }
+            p_thr.innerHTML = p_thr_content.join(",");
+        }
+
+        button_array[6].onclick = function() {
+            p_thr_content.splice(1,2);
+            p_thr.innerHTML = p_thr_content.join(",");
+        }
+
+        button_array[7].onclick = function() {
+            p_thr_content.splice(1,0,"orange","purple");
+            p_thr.innerHTML = p_thr_content.join(",");
+        }
+
+        button_array[8].onclick = function() {
+            p_thr_content.splice(1,2,"#009900","#0000ff");
+            p_thr.innerHTML = p_thr_content.join(",");
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <p id="p_one">January(1),February(2),March(3),April(4),May(5),June(6),July(7),Aguest(8),September(9),October(10),November(11),December(12)
+    </p>
+    <button>删除January(1)</button>
+    <button>删除December(12)</button>
+    <p id="p_two">0,1,2,3,4,5,6,7,8,9</p>
+    <button>复制</button>
+    <button>还原</button>
+    <p id="p_thr">red,green,blue,white,yellow,black,brown</p>
+    <button>还原</button>
+    <button>删除前三项</button>
+    <button>删除第二至第三项</button>
+    <button>在第二项后插入(orange,purple)</button>
+    <button>替换第二项和第三项</button>
+</body>
+
+</html>
